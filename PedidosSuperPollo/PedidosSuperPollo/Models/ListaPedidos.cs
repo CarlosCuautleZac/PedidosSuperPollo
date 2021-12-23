@@ -38,15 +38,25 @@ namespace PedidosSuperPollo.Models
         {
             if (Validar(p, false))
             {
+                p.Estado = 0;
                 conection.Insert(p);
             }
         }
 
         //READ
-        public IEnumerable<Pedido> GetAllPedidos()
+
+        //Citas sin completar
+        public IEnumerable<Pedido> GetPedidosIncompletos()
         {
-            return conection.Table<Pedido>().OrderByDescending(x=>DateTime.Parse(x.Hora));
+            return conection.Table<Pedido>().Where(x=>x.Estado==0).OrderByDescending(x => DateTime.Parse(x.Hora));
         }
+
+        public IEnumerable<Pedido> GetPedidosCompletos()
+        {
+            return conection.Table<Pedido>().Where(x => x.Estado == 1).OrderByDescending(x => DateTime.Parse(x.Hora));
+        }
+
+        //Citas completadas
 
         //UPDATE
         public void UPDATE(Pedido p)
