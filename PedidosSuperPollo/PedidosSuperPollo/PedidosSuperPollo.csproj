@@ -27,6 +27,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\" />
+    <None Include="Views\TabbedPage1.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\HomeView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
