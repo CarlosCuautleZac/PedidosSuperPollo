@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace PedidosSuperPollo.ViewModels
@@ -16,6 +17,13 @@ namespace PedidosSuperPollo.ViewModels
 
         ListaPedidos ListaPedidos = new ListaPedidos();
 
+        public ICommand VerAgregarCommand { get; set; }
+        public ICommand AgregarCommand { get; set; }
+
+        public ICommand VerEditarCommand { get; set; }
+        public ICommand EditarCommand { get; set; }
+
+        public ICommand VerDetallesCommand { get; set; }
 
         //Aqui estan las propiedades que vamos a usar 
         private Pedido pedido;
@@ -50,6 +58,14 @@ namespace PedidosSuperPollo.ViewModels
             PedidosIncompletos = new ObservableCollection<Pedido>();
             PedidosCompletos = new ObservableCollection<Pedido>();
 
+            VerAgregarCommand = new Command(VerAgregar);
+            AgregarCommand = new Command(Agregar);
+
+            VerEditarCommand = new Command(VerEditar);
+            EditarCommand = new Command(Editar);
+
+            VerDetallesCommand = new Command<Pedido>(VerDetalles);
+
             CargarCitas();
         }
 
@@ -69,7 +85,7 @@ namespace PedidosSuperPollo.ViewModels
 
 
         //Aqui van a estar los metodos del CRUD, Primero ver la ventana y luego la accion
-        public void VerAgregar()
+        private void VerAgregar()
         {
             Error = "";
             Pedido = new Pedido();
@@ -84,7 +100,7 @@ namespace PedidosSuperPollo.ViewModels
             Application.Current.MainPage.Navigation.PopAsync();
         }
 
-        public void VerEditar()
+        private void VerEditar()
         {
             Error = "";
             Pedido clon = new Pedido()
