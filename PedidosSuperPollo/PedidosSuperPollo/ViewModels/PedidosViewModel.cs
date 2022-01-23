@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
+using Xamarin.Forms;
 
 namespace PedidosSuperPollo.ViewModels
 {
@@ -15,6 +16,8 @@ namespace PedidosSuperPollo.ViewModels
 
         ListaPedidos ListaPedidos = new ListaPedidos();
 
+
+        //Aqui estan las propiedades que vamos a usar 
         private Pedido pedido;
 
         public Pedido Pedido
@@ -37,7 +40,7 @@ namespace PedidosSuperPollo.ViewModels
         public bool Estado
         {
             get { return estado; }
-            set { estado = value; }
+            set { estado = value; Actualizar(); }
         }
 
 
@@ -50,6 +53,8 @@ namespace PedidosSuperPollo.ViewModels
             CargarCitas();
         }
 
+
+        //Cargamos las citas
         private void CargarCitas()
         {
             //Falso es para las citas incomplertas
@@ -60,7 +65,56 @@ namespace PedidosSuperPollo.ViewModels
 
             PedidosIncompletos = (ObservableCollection<Pedido>)ListaPedidos.GetPedidosIncompletos();
 
+        }
 
+
+        //Aqui van a estar los metodos del CRUD, Primero ver la ventana y luego la accion
+        public void VerAgregar()
+        {
+            Error = "";
+            Pedido = new Pedido();
+            //Falta hacerle pushaysinc la venta de veragregar
+        }
+
+        private void Agregar()
+        {
+            ListaPedidos.INSERT(Pedido);
+            CargarCitas();
+            Error = "";
+            Application.Current.MainPage.Navigation.PopAsync();
+        }
+
+        public void VerEditar()
+        {
+            Error = "";
+            Pedido clon = new Pedido()
+            {
+                Id = Pedido.Id,
+                Nombre = Pedido.Nombre,
+                Direccion = Pedido.Direccion,
+                Cliente = Pedido.Cliente,
+                Estado = Pedido.Estado,
+                Hora = Pedido.Hora,
+                Precio = Pedido.Precio
+            };
+            Pedido = clon;
+
+            //Falta hacer el pushaysinc a la ventana
+        }
+
+        private void Editar()
+        {
+            ListaPedidos.UPDATE(Pedido);
+            CargarCitas();
+            Application.Current.MainPage.Navigation.PopAsync();
+
+        }
+
+        private void VerDetalles(Pedido pedido)
+        {
+            Pedido = pedido;
+            CargarCitas();
+            //Falta hacer el pushaysinc a la ventana 
         }
 
         public void Actualizar(string nombre = "")

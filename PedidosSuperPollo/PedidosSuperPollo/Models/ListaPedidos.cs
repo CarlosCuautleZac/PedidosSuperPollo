@@ -48,7 +48,7 @@ namespace PedidosSuperPollo.Models
         //Citas sin completar
         public IEnumerable<Pedido> GetPedidosIncompletos()
         {
-            return conection.Table<Pedido>().Where(x=>x.Estado==0).OrderByDescending(x => DateTime.Parse(x.Hora));
+            return conection.Table<Pedido>().Where(x => x.Estado == 0).OrderByDescending(x => DateTime.Parse(x.Hora));
         }
 
         public IEnumerable<Pedido> GetPedidosCompletos()
@@ -79,6 +79,7 @@ namespace PedidosSuperPollo.Models
         {
             if (p.Hora == "" || p.Hora == null)
                 p.Hora = Ahora.ToString("t");
+
 
             if (string.IsNullOrWhiteSpace(p.Nombre))
                 throw new ArgumentException("Escriba el nombre del pedido");
