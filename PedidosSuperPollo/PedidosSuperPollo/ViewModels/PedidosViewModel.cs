@@ -126,6 +126,8 @@ namespace PedidosSuperPollo.ViewModels
 
         }
 
+        
+
         private void VerDetalles(Pedido pedido)
         {
             Pedido = pedido;
