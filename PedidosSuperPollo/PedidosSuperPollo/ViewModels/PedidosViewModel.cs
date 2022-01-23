@@ -25,6 +25,8 @@ namespace PedidosSuperPollo.ViewModels
 
         public ICommand VerDetallesCommand { get; set; }
 
+        public ICommand VerEliminarCommand { get; set; }
+
         //Aqui estan las propiedades que vamos a usar 
         private Pedido pedido;
 
@@ -58,6 +60,7 @@ namespace PedidosSuperPollo.ViewModels
             PedidosIncompletos = new ObservableCollection<Pedido>();
             PedidosCompletos = new ObservableCollection<Pedido>();
 
+            //Commands
             VerAgregarCommand = new Command(VerAgregar);
             AgregarCommand = new Command(Agregar);
 
@@ -65,6 +68,8 @@ namespace PedidosSuperPollo.ViewModels
             EditarCommand = new Command(Editar);
 
             VerDetallesCommand = new Command<Pedido>(VerDetalles);
+
+            VerEliminarCommand = new Command(VerEliminar);
 
             CargarCitas();
         }
@@ -127,12 +132,22 @@ namespace PedidosSuperPollo.ViewModels
         }
 
         
-
         private void VerDetalles(Pedido pedido)
         {
             Pedido = pedido;
             CargarCitas();
             //Falta hacer el pushaysinc a la ventana 
+        }
+
+        private async void VerEliminar()
+        {
+            bool eliminar = await Application.Current.MainPage.DisplayAlert("ADVERTENCIA", $"¿Desea cancelar el pedido de: {Pedido.Nombre}?", "Si", "No");
+            if (eliminar == true)
+            {
+                ListaPedidos.DELETE(Pedido);
+                CargarCitas();
+                _ = Application.Current.MainPage.Navigation.PopAsync();
+            }
         }
 
         public void Actualizar(string nombre = "")
