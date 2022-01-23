@@ -31,6 +31,7 @@ namespace PedidosSuperPollo.ViewModels
             set { error = value; Actualizar(); }
         }
 
+        //Falso es para las citas incomplertas
         private bool estado=false;
 
         public bool Estado
@@ -40,6 +41,27 @@ namespace PedidosSuperPollo.ViewModels
         }
 
 
+        //Constructor
+        public PedidosViewModel()
+        {
+            PedidosIncompletos = new ObservableCollection<Pedido>();
+            PedidosCompletos = new ObservableCollection<Pedido>();
+
+            CargarCitas();
+        }
+
+        private void CargarCitas()
+        {
+            //Falso es para las citas incomplertas
+            //if (Estado==false)
+
+            PedidosIncompletos.Clear();
+            PedidosCompletos.Clear();
+
+            PedidosIncompletos = (ObservableCollection<Pedido>)ListaPedidos.GetPedidosIncompletos();
+
+
+        }
 
         public void Actualizar(string nombre = "")
         {
