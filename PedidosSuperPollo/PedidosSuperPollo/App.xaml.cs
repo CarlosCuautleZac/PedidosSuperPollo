@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PedidosSuperPollo.Views;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,8 @@ namespace PedidosSuperPollo
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new HomeView();
+            
         }
 
         protected override void OnStart()
