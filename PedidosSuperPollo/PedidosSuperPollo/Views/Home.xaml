@@ -8,7 +8,7 @@
         <Grid>
             <Grid.Background>
                 <RadialGradientBrush Center="0,0" Radius=".5">
-                    <GradientStop Color="#730db2" Offset=".01"></GradientStop>
+                    <GradientStop Color="#8a0408" Offset=".01"></GradientStop>
                     <GradientStop Color="#171717" Offset="1"></GradientStop>
                 </RadialGradientBrush>
             </Grid.Background>
@@ -21,8 +21,12 @@
                         <ColumnDefinition Width="50"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
-                    <Label FontSize="35"
-                           Padding="0">Buenas tardes</Label>
+                    <Label FontSize="27"
+                           Padding="0"
+                           TextColor="#f7f7f7"
+                           Margin="15,40,0,0"
+                           FontFamily="GothamBold">Buenas tardes</Label>
+                    
                     
                     
                     
