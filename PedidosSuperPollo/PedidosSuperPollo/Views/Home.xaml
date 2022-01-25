@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PedidosSuperPollo.Views.Home"
+             >
+    
+    <ContentPage.Content>
+        <Grid>
+            <Grid.Background>
+                <RadialGradientBrush Center="0,0" Radius=".5">
+                    <GradientStop Color="#730db2" Offset=".01"></GradientStop>
+                    <GradientStop Color="#171717" Offset="1"></GradientStop>
+                </RadialGradientBrush>
+            </Grid.Background>
+
+            <StackLayout>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="50"></ColumnDefinition>
+                        <ColumnDefinition Width="50"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label FontSize="35"
+                           Padding="0">Buenas tardes</Label>
+                    
+                    
+                    
+                    
+                    
+                    
+                </Grid>
+                
+                
+                
+                
+                
+                
+            </StackLayout>
+            
+            
+            
+            
+
+            <Grid VerticalOptions="EndAndExpand" HeightRequest="70">
+                <Grid.Background>
+                    <LinearGradientBrush StartPoint="0,1" EndPoint="0,0">
+                        <GradientStop Color="Black" Offset=".23"></GradientStop>
+                        <GradientStop Color="Transparent" Offset="1"></GradientStop>
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <AbsoluteLayout HorizontalOptions="Center"
+                                VerticalOptions="Center"
+                                WidthRequest="30">
+                    <Path Stroke="white"
+                          StrokeThickness="1"
+                          Data="M15,5 l10,10 v15 h-7 v-8 M15,5 l-10,10 v15 h7 v-8 h6"
+                          HorizontalOptions="Center"
+                          VerticalOptions="Center"
+                          StrokeLineCap="Round">
+
+                    </Path>
+                </AbsoluteLayout>
+                <AbsoluteLayout HorizontalOptions="Center"
+                                VerticalOptions="Center"
+                                Grid.Column="1"
+                                WidthRequest="30"
+                                HeightRequest="30">
+                    <Grid TranslationX="2.5"
+                      TranslationY="2">
+                        <Ellipse Stroke="white"
+                         HeightRequest="20"
+                         WidthRequest="20"
+                             VerticalOptions="Start"
+                             HorizontalOptions="Start">
+                        </Ellipse>
+                        <Path Stroke="white"
+                          StrokeThickness="1"
+                          Data="M17,17 l7,7"
+                          StrokeLineCap="Round">
+
+                        </Path>
+                    </Grid>
+                </AbsoluteLayout>
+                <AbsoluteLayout HorizontalOptions="Center" 
+                                VerticalOptions="Center"
+                                Grid.Column="2"
+                                WidthRequest="30"
+                                HeightRequest="30">
+
+                    <Path Stroke="white"
+                          StrokeThickness="1"
+                          Data="M5,4 H25 M5,13 H25 M5,22 H25"
+                          HorizontalOptions="Center"
+                          VerticalOptions="Center">
+                    </Path>
+
+                </AbsoluteLayout>
+            </Grid>
+
+
+
+        </Grid>
+        
+            
+        
+    </ContentPage.Content>
+</ContentPage>

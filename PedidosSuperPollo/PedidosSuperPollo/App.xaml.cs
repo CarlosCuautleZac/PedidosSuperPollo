@@ -11,7 +11,7 @@ namespace PedidosSuperPollo
         {
             InitializeComponent();
 
-            MainPage = new HomeView();
+            MainPage = new Home();
             
         }
 
