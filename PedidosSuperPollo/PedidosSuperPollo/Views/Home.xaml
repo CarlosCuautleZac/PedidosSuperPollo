@@ -1,10 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:hp="clr-namespace:PedidosSuperPollo.Helpers"
+             xmlns:vm="clr-namespace:PedidosSuperPollo.ViewModels"
              x:Class="PedidosSuperPollo.Views.Home">
     
     <ContentPage.Content>
         <Grid>
+            <Grid.BindingContext>
+                <vm:PedidosViewModel></vm:PedidosViewModel>
+            </Grid.BindingContext>
+            
+            <Grid.Resources>
+                <hp:TimeToLabelConvert x:Key="tlb"></hp:TimeToLabelConvert>
+            </Grid.Resources>
             <Grid.Background>
                 <RadialGradientBrush Center="0,0" Radius=".5">
                     <GradientStop Color="#8a0408" Offset=".01"></GradientStop>
@@ -24,7 +33,7 @@
                            Padding="0"
                            TextColor="#f7f7f7"
                            Margin="15,50,0,0"
-                           FontFamily="GothamBold">Buenas tardes</Label>
+                           FontFamily="GothamBold" Text="{Binding Ahora,Converter={StaticResource tlb}}"></Label>
 
                     <!--
                     <Path Grid.Column="1"

@@ -48,12 +48,12 @@ namespace PedidosSuperPollo.Models
         //Citas sin completar
         public IEnumerable<Pedido> GetPedidosIncompletos()
         {
-            return conection.Table<Pedido>().Where(x => x.Estado == 0).OrderByDescending(x => DateTime.Parse(x.Hora));
+            return conection.Table<Pedido>().Where(x => x.Estado == 0).OrderByDescending(x => x.Hora);
         }
 
         public IEnumerable<Pedido> GetPedidosCompletos()
         {
-            return conection.Table<Pedido>().Where(x => x.Estado == 1).OrderByDescending(x => DateTime.Parse(x.Hora));
+            return conection.Table<Pedido>().Where(x => x.Estado == 1).OrderByDescending(x =>x.Hora);
         }
 
         //Citas completadas

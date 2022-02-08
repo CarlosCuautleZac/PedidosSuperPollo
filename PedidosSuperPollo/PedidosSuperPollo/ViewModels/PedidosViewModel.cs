@@ -12,6 +12,7 @@ namespace PedidosSuperPollo.ViewModels
     class PedidosViewModel : INotifyPropertyChanged
     {
 
+
         public ObservableCollection<Pedido> PedidosIncompletos { get; set; }
         public ObservableCollection<Pedido> PedidosCompletos { get; set; }
 
@@ -28,6 +29,13 @@ namespace PedidosSuperPollo.ViewModels
         public ICommand VerEliminarCommand { get; set; }
 
         //Aqui estan las propiedades que vamos a usar 
+
+        public DateTime Ahora { get; set; }
+
+        
+        
+
+
         private Pedido pedido;
 
         public Pedido Pedido
@@ -71,6 +79,8 @@ namespace PedidosSuperPollo.ViewModels
 
             VerEliminarCommand = new Command(VerEliminar);
 
+            Ahora = DateTime.Now;
+
             CargarCitas();
         }
 
@@ -84,8 +94,17 @@ namespace PedidosSuperPollo.ViewModels
             PedidosIncompletos.Clear();
             PedidosCompletos.Clear();
 
-            PedidosIncompletos = (ObservableCollection<Pedido>)ListaPedidos.GetPedidosIncompletos();
+            var citas = ListaPedidos.GetPedidosCompletos();
+            foreach (var i in citas)
+            {
+                PedidosCompletos.Add(i);
+            }
 
+            var citasin = ListaPedidos.GetPedidosIncompletos();
+            foreach (var i in citasin)
+            {
+                PedidosIncompletos.Add(i);
+            }
         }
 
 
