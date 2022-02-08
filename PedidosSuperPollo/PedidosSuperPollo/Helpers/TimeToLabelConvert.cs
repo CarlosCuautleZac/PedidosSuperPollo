@@ -12,10 +12,10 @@ namespace PedidosSuperPollo.Helpers
         {
             DateTime ahora = (DateTime)value;
             
-            if (ahora.Hour >= 6 && ahora.Hour <= 12)
+            if (ahora.Hour >= 6 && ahora.Hour < 12)
                 return "Buenos dias";
 
-            else if (ahora.Hour > 12 && ahora.Hour < 19)
+            else if (ahora.Hour >= 12 && ahora.Hour < 19)
                 return "Buenas tardes";
 
             else
