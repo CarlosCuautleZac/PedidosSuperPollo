@@ -11,13 +11,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Data\pedidos.db3" />
+    <None Remove="Data\Pedidos.db3" />
     <None Remove="Fonts\Gotham-Black.otf" />
     <None Remove="Fonts\GothamBold.ttf" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Data\pedidos.db3">
+    <EmbeddedResource Include="Data\Pedidos.db3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Fonts\Gotham-Black.otf" />

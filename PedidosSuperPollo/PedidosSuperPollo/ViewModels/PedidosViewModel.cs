@@ -82,8 +82,11 @@ namespace PedidosSuperPollo.ViewModels
             Ahora = DateTime.Now;
 
             CargarCitas();
+
+            total = PedidosIncompletos.Count+PedidosCompletos.Count;
         }
 
+        int total = 0;
 
         //Cargamos las citas
         private void CargarCitas()
@@ -91,8 +94,8 @@ namespace PedidosSuperPollo.ViewModels
             //Falso es para las citas incomplertas
             //if (Estado==false)
 
-            PedidosIncompletos.Clear();
-            PedidosCompletos.Clear();
+            //PedidosIncompletos.Clear();
+            //PedidosCompletos.Clear();
 
             var citas = ListaPedidos.GetPedidosCompletos();
             foreach (var i in citas)
@@ -105,6 +108,8 @@ namespace PedidosSuperPollo.ViewModels
             {
                 PedidosIncompletos.Add(i);
             }
+
+            
         }
 
 

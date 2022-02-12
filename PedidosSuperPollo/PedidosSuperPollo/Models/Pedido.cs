@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PedidosSuperPollo.Models
 {
-    [Table("pedido")]
+    [Table("Pedidos")]
     public class Pedido
     {
         [PrimaryKey]
@@ -22,13 +22,17 @@ namespace PedidosSuperPollo.Models
         [NotNull]
         public decimal Precio { get; set; }
 
-        [NotNull]
-        public string Hora { get; set; }
-
         public string Cliente { get; set; }
 
         [NotNull]
         public int Estado { get; set; }
+
+        [NotNull]
+        public string Hora { get; set; }
+
+       
+
+        
 
     }
 }

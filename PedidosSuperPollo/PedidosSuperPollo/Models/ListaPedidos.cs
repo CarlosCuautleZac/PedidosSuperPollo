@@ -12,14 +12,14 @@ namespace PedidosSuperPollo.Models
         public SQLiteConnection conection { get; set; }
 
         //string rutadb = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "/Citas.db3";
-        string rutadb = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "/pedidos.db3";
+        string rutadb = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "/Pedidos.db3";
 
         public ListaPedidos()
         {
             if (!File.Exists(rutadb))
             {
                 Assembly ensamblado = Assembly.GetExecutingAssembly();
-                var stream = ensamblado.GetManifestResourceStream("PedidosSuperPollo.Data.pedidos.db3");
+                var stream = ensamblado.GetManifestResourceStream("PedidosSuperPollo.Data.Pedidos.db3");
                 FileStream file = File.Create(rutadb);
                 stream.CopyTo(file);
                 stream.Close();
