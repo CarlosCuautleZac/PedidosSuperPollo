@@ -160,6 +160,8 @@ namespace PedidosSuperPollo.ViewModels
         {
             Pedido = pedido;
             CargarCitas();
+
+            //Esto es un test 
             //Falta hacer el pushaysinc a la ventana 
         }
 
