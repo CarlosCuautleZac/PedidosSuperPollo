@@ -159,7 +159,7 @@ namespace PedidosSuperPollo.ViewModels
         private void VerDetalles(Pedido pedido)
         {
             Pedido = pedido;
-            CargarCitas();
+            //CargarCitas();prosedencia dudosa
             //Falta hacer el pushaysinc a la ventana 
         }
 
