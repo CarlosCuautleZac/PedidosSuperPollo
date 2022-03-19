@@ -12,10 +12,11 @@ namespace PedidosSuperPollo.ViewModels
     class PedidosViewModel : INotifyPropertyChanged
     {
 
+
         public ObservableCollection<Pedido> PedidosIncompletos { get; set; }
         public ObservableCollection<Pedido> PedidosCompletos { get; set; }
 
-        ListaPedidos ListaPedidos = new ListaPedidos();
+        //ListaPedidos ListaPedidos = new ListaPedidos();
 
         public ICommand VerAgregarCommand { get; set; }
         public ICommand AgregarCommand { get; set; }
@@ -28,6 +29,13 @@ namespace PedidosSuperPollo.ViewModels
         public ICommand VerEliminarCommand { get; set; }
 
         //Aqui estan las propiedades que vamos a usar 
+
+        public DateTime Ahora { get; set; }
+
+        
+        
+
+
         private Pedido pedido;
 
         public Pedido Pedido
@@ -71,9 +79,14 @@ namespace PedidosSuperPollo.ViewModels
 
             VerEliminarCommand = new Command(VerEliminar);
 
+            Ahora = DateTime.Now;
+
             CargarCitas();
+
+            total = PedidosIncompletos.Count+PedidosCompletos.Count;
         }
 
+        int total = 0;
 
         //Cargamos las citas
         private void CargarCitas()
@@ -81,11 +94,22 @@ namespace PedidosSuperPollo.ViewModels
             //Falso es para las citas incomplertas
             //if (Estado==false)
 
-            PedidosIncompletos.Clear();
-            PedidosCompletos.Clear();
+            //PedidosIncompletos.Clear();
+            //PedidosCompletos.Clear();
 
-            PedidosIncompletos = (ObservableCollection<Pedido>)ListaPedidos.GetPedidosIncompletos();
+            //var citas = ListaPedidos.GetPedidosCompletos();
+            //foreach (var i in citas)
+            //{
+            //    PedidosCompletos.Add(i);
+            //}
 
+            //var citasin = ListaPedidos.GetPedidosIncompletos();
+            //foreach (var i in citasin)
+            //{
+            //    PedidosIncompletos.Add(i);
+            //}
+
+            
         }
 
 
@@ -99,7 +123,7 @@ namespace PedidosSuperPollo.ViewModels
 
         private void Agregar()
         {
-            ListaPedidos.INSERT(Pedido);
+            //ListaPedidos.INSERT(Pedido);
             CargarCitas();
             Error = "";
             Application.Current.MainPage.Navigation.PopAsync();
@@ -107,25 +131,25 @@ namespace PedidosSuperPollo.ViewModels
 
         private void VerEditar()
         {
-            Error = "";
-            Pedido clon = new Pedido()
-            {
-                Id = Pedido.Id,
-                Nombre = Pedido.Nombre,
-                Direccion = Pedido.Direccion,
-                Cliente = Pedido.Cliente,
-                Estado = Pedido.Estado,
-                Hora = Pedido.Hora,
-                Precio = Pedido.Precio
-            };
-            Pedido = clon;
+            //Error = "";
+            //Pedido clon = new Pedido()
+            //{
+            //    Id = Pedido.Id,
+            //    Nombre = Pedido.Nombre,
+            //    Direccion = Pedido.Direccion,
+            //    Cliente = Pedido.Cliente,
+            //    Estado = Pedido.Estado,
+            //    Hora = Pedido.Hora,
+            //    Precio = Pedido.Precio
+            //};
+            //Pedido = clon;
 
             //Falta hacer el pushaysinc a la ventana
         }
 
         private void Editar()
         {
-            ListaPedidos.UPDATE(Pedido);
+            //ListaPedidos.UPDATE(Pedido);
             CargarCitas();
             Application.Current.MainPage.Navigation.PopAsync();
 
@@ -135,19 +159,21 @@ namespace PedidosSuperPollo.ViewModels
         private void VerDetalles(Pedido pedido)
         {
             Pedido = pedido;
-            CargarCitas();
+
+            //CargarCitas();prosedencia dudosa
+
             //Falta hacer el pushaysinc a la ventana 
         }
 
         private async void VerEliminar()
         {
-            bool eliminar = await Application.Current.MainPage.DisplayAlert("ADVERTENCIA", $"¿Desea cancelar el pedido de: {Pedido.Nombre}?", "Si", "No");
-            if (eliminar == true)
-            {
-                ListaPedidos.DELETE(Pedido);
-                CargarCitas();
-                _ = Application.Current.MainPage.Navigation.PopAsync();
-            }
+            //bool eliminar = await Application.Current.MainPage.DisplayAlert("ADVERTENCIA", $"¿Desea cancelar el pedido de: {Pedido.Nombre}?", "Si", "No");
+            //if (eliminar == true)
+            //{
+            //    //ListaPedidos.DELETE(Pedido);
+            //    CargarCitas();
+            //    _ = Application.Current.MainPage.Navigation.PopAsync();
+            //}
         }
 
         public void Actualizar(string nombre = "")
