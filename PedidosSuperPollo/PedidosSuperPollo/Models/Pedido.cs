@@ -5,34 +5,19 @@ using System.Text;
 
 namespace PedidosSuperPollo.Models
 {
-    [Table("Pedidos")]
+    
     public class Pedido
     {
-        [PrimaryKey]
-        [AutoIncrement]
-        [NotNull]
-        public int Id { get; set; }
-
-        [NotNull]
-        public string Nombre { get; set; }
-
-        [NotNull]
-        public string Direccion { get; set; }
-
-        [NotNull]
-        public decimal Precio { get; set; }
-
-        public string Cliente { get; set; }
-
-        [NotNull]
-        public int Estado { get; set; }
-
-        [NotNull]
-        public string Hora { get; set; }
-
-       
-
         
+        public int Id { get; set; }
+       
+        public DateTime Fecha { get; set; }
+        
+        public DateTime? HoraEntregado { get; set; }
+   
+        public DateTime HoraSolicitado { get; set; }
 
+        public string Direccion { get; set; }
+       
     }
 }
