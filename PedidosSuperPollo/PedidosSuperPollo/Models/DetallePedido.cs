@@ -7,11 +7,50 @@ namespace PedidosSuperPollo.Models
 {
     class DetallePedido:INotifyPropertyChanged
     {
-        public int Id { get; set; }
-        public int Cantidad { get; set; }
-        public decimal MontoPagar { get; set; }
-        public int IdPedido { get; set; }
-        public int IdPlatillo { get; set; }
+        private int id;
+
+        public int Id
+        {
+            get { return id; }
+            set { id = value; Actualizar(); }
+        }
+
+
+        private int cantidad;
+
+        public int Cantidad
+        {
+            get { return cantidad; }
+            set { cantidad = value; Actualizar(); }
+        }
+
+
+        private decimal montoapagar;
+
+        public decimal MontoAPagar
+        {
+            get { return montoapagar; }
+            set { montoapagar = value; Actualizar(); }
+        }
+
+
+        private int idpedido;
+
+        public int IdPedido
+        {
+            get { return idpedido; }
+            set { idpedido = value; Actualizar(); }
+        }
+
+
+        private int idplatillo;
+
+        public int IdPlatillo
+        {
+            get { return idplatillo; }
+            set { idplatillo = value;Actualizar();}
+        }
+
 
         public void Actualizar(string nombre = "")
         {
