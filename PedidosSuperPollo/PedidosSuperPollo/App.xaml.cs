@@ -6,6 +6,7 @@ using Xamarin.Forms.Xaml;
 
 [assembly: ExportFont("GothamBold.ttf", Alias = "GothamBold")]
 [assembly: ExportFont("Gotham-Black.otf", Alias = "GothamBlack")]
+[assembly: ExportFont("Montserrat-Light.ttf", Alias = "MonserratLight")]
 namespace PedidosSuperPollo
 {
     public partial class App : Application
