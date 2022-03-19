@@ -13,23 +13,22 @@ namespace PedidosSuperPollo.Models
         SqlCommand comando;
         SqlDataReader lector;
         SqlConnection conexion = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SuperPollo;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
- 
-         public ObservableCollection<Pedido> ListaPedidos { get; set; }
 
-        public ObservableCollection<Platillo> ListaPlatillos{ get; set; }
+        public ObservableCollection<Pedido> ListaPedidos { get; set; }
 
+        public ObservableCollection<Platillo> ListaPlatillos { get; set; }
 
-           public void Conectar()
+        public void Conectar()
         {
             if (conexion.State == ConnectionState.Closed)
             {
                 conexion.Open();
             }
         }
-
-           ~PedidosContext()
+  
+        ~PedidosContext()
         {
-            if(conexion.State!=ConnectionState.Closed)
+            if (conexion.State != ConnectionState.Closed)
             {
                 conexion.Close();
             }
@@ -42,26 +41,44 @@ namespace PedidosSuperPollo.Models
             comando.Connection = conexion;
             comando.CommandText = "select * from Pedidos;";
 
-            lector=comando.ExecuteReader();
+            lector = comando.ExecuteReader();
             ListaPedidos = new ObservableCollection<Pedido>();
 
-            while(lector.Read())
+            while (lector.Read())
             {
                 Pedido p = new Pedido()
                 {
                     Id = (int)lector["Id"],
                     Fecha = (DateTime)lector["Fecha"],
                     HoraEntregado = (DateTime)lector["HoraEntregado"],
-                   HoraSolicitado = (DateTime)lector["HoraSolicitado"],
+                    HoraSolicitado = (DateTime)lector["HoraSolicitado"],
                     Direccion = (string)lector["Direccion"],
-                  
-                    
-            };
+
+
+                };
                 ListaPedidos.Add(p);
             }
             lector.Close();
 
 
+        }
+
+
+        public void Agregar(Pedido p)
+        {
+
+            var fecha = p.Fecha.ToString("dd-MM-yyyy");
+
+                comando.CommandText = string.Format("insert into Pedido(Fecha," + "HoraEntregado,HoraSolicitado,Direccion) " +
+                    "values('{0}','{1}','{2}','{3}')", fecha, p.HoraEntregado, p.HoraSolicitado, p.Direccion);
+                comando.ExecuteNonQuery();
+
+                comando.CommandText = string.Format("select max(Id) from Pedido");
+                var id = comando.ExecuteScalar();
+                p.Id = (int)id;
+                ListaPedidos.Add(p);
+
+            
         }
     }
 }
