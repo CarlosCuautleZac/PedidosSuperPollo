@@ -10,7 +10,7 @@ namespace PedidosSuperPollo.Models
 {
     class PedidosContext
     {
-      SqlCommand comando;
+        SqlCommand comando;
         SqlDataReader lector;
         SqlConnection conexion = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SuperPollo;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
  
