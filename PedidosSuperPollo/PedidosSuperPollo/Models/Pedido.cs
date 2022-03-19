@@ -37,7 +37,7 @@ namespace PedidosSuperPollo.Models
         }
 
 
-        private DateTime horasolicitado;
+        private DateTime horasolicitado = DateTime.Now;
 
         public DateTime HoraSolicitado
         {
