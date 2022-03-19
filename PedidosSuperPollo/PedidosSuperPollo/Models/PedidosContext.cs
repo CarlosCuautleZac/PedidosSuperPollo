@@ -34,5 +34,34 @@ namespace PedidosSuperPollo.Models
                 conexion.Close();
             }
         }
+
+        public PedidosContext()
+        {
+            Conectar();
+            comando = new SqlCommand();
+            comando.Connection = conexion;
+            comando.CommandText = "select * from Pedidos;";
+
+            lector=comando.ExecuteReader();
+            ListaPedidos = new ObservableCollection<Pedido>();
+
+            while(lector.Read())
+            {
+                Pedido p = new Pedido()
+                {
+                    Id = (int)lector["Id"],
+                    Fecha = (DateTime)lector["Fecha"],
+                    HoraEntregado = (DateTime)lector["HoraEntregado"],
+                   HoraSolicitado = (DateTime)lector["HoraSolicitado"],
+                    Direccion = (string)lector["Direccion"],
+                  
+                    
+            };
+                ListaPedidos.Add(p);
+            }
+            lector.Close();
+
+
+        }
     }
 }
