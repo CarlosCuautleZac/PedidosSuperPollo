@@ -10,11 +10,7 @@ namespace PedidosSuperPollo.Repositories
     {
         PedidosContext context = new PedidosContext();
 
-        public ObservableCollection<Pedido> ListaPedidos { get; set; }
-
-        public ObservableCollection<Platillo> ListaPlatillos { get; set; }
-
-        public ObservableCollection<DetallePedido> ListaDetallesPedido { get; set; }
+        
 
 
         public PedidosRepository()

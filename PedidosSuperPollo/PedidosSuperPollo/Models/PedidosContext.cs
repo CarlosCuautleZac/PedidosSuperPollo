@@ -28,7 +28,7 @@ namespace PedidosSuperPollo.Models
                 conexion.Open();
             }
         }
-  
+
         ~PedidosContext()
         {
             if (conexion.State != ConnectionState.Closed)
@@ -41,8 +41,8 @@ namespace PedidosSuperPollo.Models
         {
             Conectar();
             GetAllPedidos();
-        
-
+            GetAllDetallesPedido();
+            GetAllPlatillos();
         }
 
 
@@ -86,12 +86,38 @@ namespace PedidosSuperPollo.Models
                 DetallePedido detallepedido = new DetallePedido()
                 {
                     Id = (int)lector["Id"],
+                    Cantidad = (int)lector["Cantidad"],
+                    MontoAPagar = (decimal)lector["MontoAPagar"],
+                    IdPedido = (int)lector["IdPedido"],
+                    IdPlatillo = (int)lector["IdPlatillo"]
 
                 };
+                ListaDetallesPedido.Add(detallepedido);
             }
         }
 
+        public void GetAllPlatillos()
+        {
+            comando = new SqlCommand();
+            comando.Connection = conexion;
+            comando.CommandText = "select * from Platillo;";
+            lector = comando.ExecuteReader();
+            ListaPlatillos = new ObservableCollection<Platillo>();
 
+            while (lector.Read())
+            {
+                Platillo platillo = new Platillo()
+                {
+                    Id = (int)lector["Id"],
+                    Nombre=(string) lector["Nombre"],
+                    Descripcion=(string)lector["Descripcion"],
+                    Precio_Unitario = (decimal)lector["Precio_Unitario"],
+                    Foto = (byte[])lector["Foto"]
+                };
+
+                ListaPlatillos.Add(platillo);
+            }
+        }
 
 
 
@@ -110,7 +136,7 @@ namespace PedidosSuperPollo.Models
         //        p.Id = (int)id;
         //        ListaPedidos.Add(p);
 
-            
+
         //}
     }
 }
